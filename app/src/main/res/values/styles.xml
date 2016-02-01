@@ -1,11 +1,16 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+   <!--
+   External Citation
+    Date: 31 January 2016
+    Problem: Could not get rid of Action Bar
+    Resource:
+        http://stackoverflow.com/questions/28248162/why-i-cant-remove-title-bar-in-android-studio
+    Solution: I used the example code from this post.
+   -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+
     </style>
 
 </resources>
