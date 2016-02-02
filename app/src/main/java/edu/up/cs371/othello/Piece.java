@@ -1,7 +1,10 @@
 package edu.up.cs371.othello;
 
 /**
- * Created by AaronLeung on 1/31/16.
+ * @author Kieran Losh
+ * @author Austin Moehnke
+ * @author Aaron Leung
+ * @author Ryan Kane
  */
 public class Piece {
 
