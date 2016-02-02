@@ -19,7 +19,7 @@ public class Piece {
      */
     public Piece() {
         empty = true;
-        color = true;
+        color = false;
 
     }
     //Getters and setters for color and empty state

@@ -27,7 +27,7 @@ public class BoardView extends SurfaceView implements View.OnTouchListener, View
     protected int lastX = -1;
     protected int lastY;
 
-    protected boolean color = Piece.WHITE;
+    protected boolean color;
 
 
     /**
@@ -39,7 +39,7 @@ public class BoardView extends SurfaceView implements View.OnTouchListener, View
         setWillNotDraw(false);
         initPieces();
         this.setOnTouchListener(this);
-
+        color = Piece.BLACK; //Black goes first, so start with black
 
     }
     public BoardView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -47,6 +47,7 @@ public class BoardView extends SurfaceView implements View.OnTouchListener, View
         setWillNotDraw(false);
         initPieces();
         this.setOnTouchListener(this);
+        color = Piece.BLACK;
     }
 
     public BoardView(Context context, AttributeSet attrs) {
@@ -54,6 +55,7 @@ public class BoardView extends SurfaceView implements View.OnTouchListener, View
         setWillNotDraw(false);
         initPieces();
         this.setOnTouchListener(this);
+        color = Piece.BLACK;
     }
 
     public BoardView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -61,6 +63,7 @@ public class BoardView extends SurfaceView implements View.OnTouchListener, View
         setWillNotDraw(false);
         initPieces();
         this.setOnTouchListener(this);
+        color = Piece.BLACK;
     }
 
     /**
@@ -125,7 +128,7 @@ public class BoardView extends SurfaceView implements View.OnTouchListener, View
     }
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        //check if
+        //make sure that we only process one touch per drag
         if (event.getDownTime() == this.downTime){
             return false;
         }
@@ -154,6 +157,7 @@ public class BoardView extends SurfaceView implements View.OnTouchListener, View
         lastX = i;
         lastY = j;
         counter.setText("" + i + ", " + j);
+        //Log.i("board", "" + i + " " + j);
 
         this.invalidate();
 
@@ -168,19 +172,19 @@ public class BoardView extends SurfaceView implements View.OnTouchListener, View
     public void setConfirmButtons(Button confirm1, Button confirm2){
         this.confirmButton1 = confirm1;
         this.confirmButton2 = confirm2;
-        confirmButton1.setOnClickListener(this);
-        confirmButton2.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.confirmButton ) {
-            lastX = -1;
-            color = Piece.BLACK;
-        }
-        if (v.getId() == R.id.confirmTopButton){
+        if (v.getId() == R.id.confirmButton && color == Piece.BLACK) {
+            Log.i("Button1", "Clicked");
             lastX = -1;
             color = Piece.WHITE;
+        }
+        if (v.getId() == R.id.confirmTopButton && color == Piece.WHITE){
+            Log.i("Button2", "Clicked");
+            lastX = -1;
+            color = Piece.BLACK;
         }
     }
 }
